@@ -12,7 +12,7 @@ const Navbar = () => {
     "technology",
   ];
   return (
-    <nav className="shadow-md py-3">
+    <nav className="shadow-md mx-auto max-w-5xl py-3 px-4">
       <div className="flex items-cente justify-between gap-4 max-w-6xl mx-auto">
         <div className="flex gap-3 items-center">
           <ClockCircleTwoTone />
@@ -23,7 +23,7 @@ const Navbar = () => {
           {" "}
           {links.map((item) => (
             <NavLink
-              className="font-semibold mr-2 hover: text-blue-500text-gray-400"
+              className="font-semibold mr-2 hover:text-blue-500 text-gray-400 transition-colors duration-300"
               to={item}
             >
               {" "}

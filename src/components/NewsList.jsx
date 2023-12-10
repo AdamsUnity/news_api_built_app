@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { newsBaseUrl } from "../utils/helper";
 import { Button } from "antd";
-import Navbar from "../components/Navbar";
 import NewsCard from "../components/NewsCard";
+import Marquee from "react-fast-marquee";
 
 function NewsList({ category }) {
   const [data, setData] = React.useState(null);
@@ -47,14 +45,24 @@ function NewsList({ category }) {
   if (loading) {
     return <div className="spinner"></div>;
   }
-  console.log(data);
+
   return (
     <>
-      {data.map((item) => (
-        <NewsCard key={item._id} {...item} />
-      ))}
-
-      <Button type="primary">Button</Button>
+      <section className=" max-w-5xl mx-auto my-10 px-4">
+        <Marquee>
+          News Headline:
+          {data?.map((item) => (
+            <p className="uppercase font-semibold ">-- {item.title} --</p>
+          ))}
+        </Marquee>
+        <h1 className="capitalize my-4">Trending {category} News</h1>
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-col-3 gap-4">
+          {" "}
+          {data.map((item) => (
+            <NewsCard key={item._id} {...item} />
+          ))}
+        </div>
+      </section>
     </>
   );
 }
