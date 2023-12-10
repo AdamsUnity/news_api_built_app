@@ -1,6 +1,11 @@
 import React from "react";
 import { Button, Card } from "antd";
+import TimeAgo from "javascript-time-ago";
 const { Meta } = Card;
+import en from "javascript-time-ago/locale/en";
+import enUS from "antd/es/calendar/locale/en_US";
+TimeAgo.addDefaultLocale(en);
+
 // import TimeAgo from "javascript-time-ago";
 
 // // English.
@@ -10,7 +15,7 @@ const { Meta } = Card;
 
 // // Create formatter (English).
 // const timeAgo = new TimeAgo("en-US");
-
+const timeAgo = new TimeAgo("en-US");
 const NewsCard = ({
   image,
   link,
@@ -37,15 +42,15 @@ const NewsCard = ({
       />
     }
     actions={[
-      <Button>
+      <Button className="">
         <a href={link} target="_blank" rel="noopener noreferrer">
           {" "}
           Read More
         </a>
       </Button>,
-      // <small className="text-orange-500">
-      //   {timeAgo.format(new Date(publishedAt))}
-      // </small>,
+      <small className="text-orange-500">
+        {timeAgo.format(new Date(publishedAt))}
+      </small>,
     ]}
   >
     <Meta title={title} description={shortLink} />
